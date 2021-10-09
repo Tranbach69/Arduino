@@ -1,0 +1,28 @@
+const int seg[10] = {0b11000000, 0b11111001, 0b10100100,
+                     0b10110000, 0b10011001, 0b10010010, 0b00000010, 0b11111000,
+                     0b10000000, 0b10010000
+                    };
+const byte a = 13, b = 12, c = 11, d = 10, e = 9, f = 8, g = 7;
+void setup() {
+  pinMode(a, OUTPUT); pinMode(b, OUTPUT); pinMode(c, OUTPUT);
+  pinMode(d, OUTPUT); pinMode(e, OUTPUT); pinMode(f, OUTPUT);
+  pinMode(g, OUTPUT);
+}
+void display_Led(byte n)
+{
+  byte i = seg[n];
+  digitalWrite(a, i & 0x01);
+  digitalWrite(b, (i >> 1) & 0x01);
+  digitalWrite(c, (i >> 2) & 0x01);
+  digitalWrite(d, (i >> 3) & 0x01);
+  digitalWrite(e, (i >> 4) & 0x01);
+  digitalWrite(f, (i >> 5) & 0x01);
+  digitalWrite(g, (i >> 6) & 0x01);
+}
+void loop() {
+  for (int i = 0; i < 10; i++)
+  {
+    display_Led(i);
+    delay(1000);
+  }
+}
